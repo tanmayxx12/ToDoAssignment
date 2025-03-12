@@ -49,6 +49,7 @@ struct RootView: View {
             .sheet(isPresented: $isShowingAddTaskView) {
                 AddTaskView()
                     .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
             }
         }
         
