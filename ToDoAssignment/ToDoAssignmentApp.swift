@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ToDoAssignmentApp: App {
+    @StateObject private var listViewModel: ListViewModel = ListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(listViewModel)
         }
     }
 }
