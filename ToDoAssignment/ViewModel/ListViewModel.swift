@@ -29,15 +29,17 @@ class ListViewModel: ObservableObject {
         self.tasks = savedTasks
     }
     
+    // Function that saves tasks to UserDefaults:
+    private func saveTasks() {
+        if let encodedData = try? JSONEncoder().encode(tasks) {
+            UserDefaults.standard.set(encodedData, forKey: taskKey)
+        }
+    }
+    
     // Function to Add task:
     func addTask(title: String) {
         let newTask = TaskModel(title: title, isCompleted: false)
         tasks.append(newTask)
-    }
-  
-    // Function to Delete Task:
-    func deleteTask(at offsets: IndexSet) {
-        tasks.remove(atOffsets: offsets)
     }
   
     // Function to Update Task:
@@ -47,10 +49,8 @@ class ListViewModel: ObservableObject {
         }
     }
     
-    // Function that Saves to UserDefaults:
-    private func saveTasks() {
-        if let encodedData = try? JSONEncoder().encode(tasks) {
-            UserDefaults.standard.set(encodedData, forKey: taskKey)
-        }
+    // Function to Delete Task:
+    func deleteTask(at offsets: IndexSet) {
+        tasks.remove(atOffsets: offsets)
     }
 }
