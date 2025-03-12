@@ -35,6 +35,7 @@ struct RootView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
+                        .disabled(listViewModel.tasks.isEmpty)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
