@@ -64,8 +64,12 @@ struct AddTaskView: View {
     
     // Function to validate the TextField Input:
     func validateInput() -> Bool {
-        return textFieldText.count > 3 && !textFieldText.isEmpty
+        if textFieldText.count < 3 {
+            return false
+        }
+        return true
     }
+    
 }
 
 #Preview {
